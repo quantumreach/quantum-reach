@@ -6,24 +6,22 @@ const Founders = () => {
   const founders = [
     {
       name: "Rushil Borsania",
-      role: "Co-Founder & CTO",
-      image: "https://i.pravatar.cc/300?img=12", // Placeholder image
+      role: "Co-Founder",
+      image: "rushil.jpeg", // Placeholder image
       bio: "A visionary tech leader with extensive experience in data analytics and web development. Rushil leads our technical strategy and innovation initiatives.",
       social: [
-        { name: "Twitter", icon: <Twitter className="h-5 w-5" />, url: "https://twitter.com/rushilborsania" },
-        { name: "GitHub", icon: <Github className="h-5 w-5" />, url: "https://github.com/rushilborsania" },
-        { name: "LinkedIn", icon: <Linkedin className="h-5 w-5" />, url: "https://linkedin.com/in/rushilborsania" }
+        { name: "LinkedIn", icon: <Linkedin className="h-5 w-5" />, url: "https://www.linkedin.com/in/rushil-borsania-576517259/" }
       ]
     },
     {
       name: "Sahil Kumar Singh",
-      role: "Co-Founder & CEO",
-      image: "https://i.pravatar.cc/300?img=67", // Placeholder image
+      role: "Co-Founder",
+      image: "sks.jpeg", // Placeholder image
       bio: "A strategic business leader with a passion for leveraging technology to solve complex problems. Sahil oversees the business operations and client relationships.",
       social: [
-        { name: "Twitter", icon: <Twitter className="h-5 w-5" />, url: "https://twitter.com/sahilkumarsingh" },
-        { name: "GitHub", icon: <Github className="h-5 w-5" />, url: "https://github.com/sahilkumarsingh" },
-        { name: "LinkedIn", icon: <Linkedin className="h-5 w-5" />, url: "https://linkedin.com/in/sahilkumarsingh" }
+        { name: "Twitter", icon: <Twitter className="h-5 w-5" />, url: "https://x.com/kyameinsahilwho" },
+        { name: "GitHub", icon: <Github className="h-5 w-5" />, url: "https://github.com/kyameinsahilwho" },
+        { name: "LinkedIn", icon: <Linkedin className="h-5 w-5" />, url: "https://www.linkedin.com/in/kyameinsahilwho/" }
       ]
     }
   ];
@@ -63,11 +61,6 @@ const Founders = () => {
                       </a>
                     </Button>
                   ))}
-                  <Button variant="outline" size="icon" asChild>
-                    <a href="mailto:hr@quantumreach.in" aria-label="Email">
-                      <Mail className="h-5 w-5" />
-                    </a>
-                  </Button>
                 </div>
               </div>
             </div>

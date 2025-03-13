@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -35,8 +34,8 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo and company name */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-md bg-gradient-to-br from-quantum-300 to-quantum-400 flex items-center justify-center text-white font-bold text-xl">
-              QR
+            <div className="w-16 h-16 rounded-md flex items-center justify-center text-white font-bold text-xl">
+              <img src="/qr.png" alt="QuantumReach Logo" className="w-16 h-16" />
             </div>
             <span className="text-xl font-display font-bold tracking-tight">
               Quantum<span className="text-quantum-400">Reach</span>
