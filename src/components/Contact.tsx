@@ -44,10 +44,10 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // First, save to database
+      // First, save to database - fixed: pass data as a single object, not an array
       const { error: dbError } = await supabase
         .from('contact_submissions')
-        .insert([data]);
+        .insert(data);
 
       if (dbError) throw dbError;
 
