@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -44,19 +43,17 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // First, save to database - fixed: pass data as a single object, not an array
+      // Save to database - fixed: ensure all fields are non-optional
       const { error: dbError } = await supabase
         .from('contact_submissions')
-        .insert(data);
+        .insert({
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message
+        });
 
       if (dbError) throw dbError;
-
-      // Then, send email via the Edge Function
-      const { error: emailError } = await supabase.functions.invoke('send-contact-email', {
-        body: data
-      });
-
-      if (emailError) throw emailError;
 
       toast.success("Message sent successfully! We'll get back to you soon.");
       form.reset();
