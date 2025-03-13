@@ -10,17 +10,22 @@ import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main>
-        <Hero />
-        <Services />
-        <Technologies />
-        <Founders />
-        <FAQ />
-        <Contact />
-      </main>
-      <Footer />
+    <div className="min-h-screen bg-background relative">
+      {/* Background grid pattern for the entire page */}
+      <div className="fixed inset-0 bg-grid-pattern bg-[length:40px_40px] opacity-20 pointer-events-none"></div>
+      
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <Hero />
+          <Services />
+          <Technologies />
+          <Founders />
+          <FAQ />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };

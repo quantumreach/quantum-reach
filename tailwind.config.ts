@@ -64,12 +64,12 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
                 quantum: {
-                    100: '#e5deff',
-                    200: '#d6bcfa',
-                    300: '#9b87f5',
-                    400: '#8B5CF6',
-                    500: '#7E69AB',
-                    600: '#6E59A5',
+                    100: '#e6f0ff',
+                    200: '#cce0ff',
+                    300: '#99c0ff',
+                    400: '#3385ff',
+                    500: '#0066ff',
+                    600: '#0052cc',
                     700: '#1A1F2C',
                 }
 			},
@@ -102,6 +102,18 @@ export default {
                 'pulse-soft': {
                     '0%, 100%': { opacity: '1' },
                     '50%': { opacity: '0.8' }
+                },
+                'float': {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-10px)' }
+                },
+                'float-reverse': {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(10px)' }
+                },
+                'spin-slow': {
+                    '0%': { transform: 'rotate(0deg)' },
+                    '100%': { transform: 'rotate(360deg)' }
                 }
 			},
 			animation: {
@@ -110,11 +122,17 @@ export default {
                 'fade-in': 'fade-in 0.7s ease-out',
                 'fade-right': 'fade-right 0.7s ease-out',
                 'fade-left': 'fade-left 0.7s ease-out',
-                'pulse-soft': 'pulse-soft 3s infinite ease-in-out'
+                'pulse-soft': 'pulse-soft 3s infinite ease-in-out',
+                'float': 'float 6s infinite ease-in-out',
+                'float-reverse': 'float-reverse 7s infinite ease-in-out',
+                'spin-slow': 'spin-slow 15s linear infinite'
 			},
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],
                 display: ['Lexend', 'sans-serif']
+            },
+            backgroundImage: {
+                'grid-pattern': 'linear-gradient(to right, rgba(51, 133, 255, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(51, 133, 255, 0.1) 1px, transparent 1px)'
             }
 		}
 	},
