@@ -6,6 +6,7 @@ import Technologies from '@/components/Technologies';
 import Founders from '@/components/Founders';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
+import Careers from '@/components/Careers';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -23,6 +24,7 @@ const Index = () => {
           <Founders />
           <FAQ />
           <Contact />
+          <Careers />
         </main>
         <Footer />
       </div>

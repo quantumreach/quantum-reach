@@ -18,6 +18,17 @@ const Header = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Close mobile menu if open
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,8 +60,8 @@ const Header = () => {
 
           {/* Contact Button (Desktop) */}
           <div className="hidden md:block">
-            <Button>
-              <Link to="/contact">Contact Us</Link>
+            <Button onClick={scrollToContact}>
+              Contact Us
             </Button>
           </div>
 
@@ -89,10 +100,8 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <Button className="mt-2">
-              <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                Contact Us
-              </Link>
+            <Button className="mt-2" onClick={scrollToContact}>
+              Contact Us
             </Button>
           </div>
         </div>
