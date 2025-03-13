@@ -115,15 +115,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex items-start">
-                <div className="flex-shrink-0 bg-muted p-3 rounded-lg mr-4">
-                  <Phone className="h-6 w-6 text-quantum-400" />
-                </div>
-                <div>
-                  <h4 className="font-medium mb-1">Phone</h4>
-                  <p className="text-muted-foreground">+91 (123) 456-7890</p>
-                </div>
-              </div>
+              
 
               <div className="flex items-start">
                 <div className="flex-shrink-0 bg-muted p-3 rounded-lg mr-4">
@@ -132,8 +124,8 @@ const Contact = () => {
                 <div>
                   <h4 className="font-medium mb-1">Office</h4>
                   <p className="text-muted-foreground">
-                    123 Tech Park, Innovation Street<br />
-                    Bangalore, Karnataka 560001<br />
+                    Ward Number 6, Chamanpur<br />
+                    Sheohar, Bihar 843329<br />
                     India
                   </p>
                 </div>
