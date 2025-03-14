@@ -1,16 +1,20 @@
+
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/context/AuthContext';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { user, signOut } = useAuth();
 
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
+    { name: 'Blogs', href: '/blogs' },
   ];
 
   const toggleMobileMenu = () => {
@@ -55,10 +59,27 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
+            {user && (
+              <Link
+                to="/admin"
+                className="font-medium transition-colors duration-200 hover:text-quantum-400"
+              >
+                Admin
+              </Link>
+            )}
           </nav>
 
-          {/* Contact Button (Desktop) */}
-          <div className="hidden md:block">
+          {/* Contact Button and Login/Logout (Desktop) */}
+          <div className="hidden md:flex items-center space-x-4">
+            {user ? (
+              <Button variant="outline" onClick={() => signOut()}>
+                Logout
+              </Button>
+            ) : (
+              <Link to="/login">
+                <Button variant="outline">Login</Button>
+              </Link>
+            )}
             <Button onClick={scrollToContact}>
               Contact Us
             </Button>
@@ -99,6 +120,35 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
+            {user && (
+              <Link
+                to="/admin"
+                className="font-medium px-3 py-2 rounded-md transition-colors duration-200 hover:bg-muted"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Admin
+              </Link>
+            )}
+            {user ? (
+              <Button 
+                variant="outline" 
+                className="mt-2" 
+                onClick={() => {
+                  signOut();
+                  setMobileMenuOpen(false);
+                }}
+              >
+                Logout
+              </Button>
+            ) : (
+              <Link 
+                to="/login" 
+                className="w-full"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Button variant="outline" className="w-full">Login</Button>
+              </Link>
+            )}
             <Button className="mt-2" onClick={scrollToContact}>
               Contact Us
             </Button>
