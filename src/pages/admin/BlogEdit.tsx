@@ -175,16 +175,33 @@ const BlogEdit = () => {
     
     try {
       const now = new Date().toISOString();
-      const updatedFormData = {
-        ...formData,
-        updated_at: now
-      };
       
       if (isNewPost) {
+        // Ensure required fields are present for a new post
+        const newBlogData = {
+          title: formData.title || '',
+          slug: formData.slug || '',
+          content: formData.content || '', // Content is required
+          excerpt: formData.excerpt || null,
+          published: formData.published || false,
+          meta_title: formData.meta_title || null,
+          meta_description: formData.meta_description || null,
+          meta_keywords: formData.meta_keywords || null,
+          featured_image: formData.featured_image || null,
+          og_title: formData.og_title || null,
+          og_description: formData.og_description || null,
+          og_image: formData.og_image || null,
+          twitter_title: formData.twitter_title || null,
+          twitter_description: formData.twitter_description || null,
+          twitter_image: formData.twitter_image || null,
+          created_at: now,
+          updated_at: now
+        };
+        
         // Create new post
         const { data, error } = await supabase
           .from('blogs')
-          .insert({ ...updatedFormData, created_at: now })
+          .insert(newBlogData)
           .select('id')
           .single();
         
@@ -198,9 +215,14 @@ const BlogEdit = () => {
         navigate(`/admin/blogs/${data.id}`);
       } else {
         // Update existing post
+        const updatedBlogData = {
+          ...formData,
+          updated_at: now
+        };
+        
         const { error } = await supabase
           .from('blogs')
-          .update(updatedFormData)
+          .update(updatedBlogData)
           .eq('id', id);
         
         if (error) throw error;
