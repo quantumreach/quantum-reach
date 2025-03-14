@@ -61,7 +61,6 @@ const Careers = () => {
     setIsSubmitting(true);
     
     try {
-      // Save to database (Note: You'll need to create a careers_applications table in Supabase)
       const { error: dbError } = await supabase
         .from('careers_applications')
         .insert({
@@ -70,9 +69,9 @@ const Careers = () => {
           phone: data.phone,
           job_title: data.jobTitle,
           job_type: data.jobType,
-          experience: data.experience,
+          experience: data.experience || '',
           education: data.education,
-          message: data.message
+          message: data.message || ''
         });
 
       if (dbError) throw dbError;
