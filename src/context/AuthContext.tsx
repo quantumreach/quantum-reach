@@ -10,6 +10,7 @@ interface AuthContextProps {
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
   loading: boolean;
+  adminAccess: () => Promise<{ error: Error | null }>;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -74,12 +75,31 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  // New function to access admin panel without login
+  const adminAccess = async () => {
+    try {
+      // Using a special access token for the admin panel
+      // This bypasses the normal login flow
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: 'admin@quantumreach.com',
+        password: 'admin123'  // This should be a secure password in production
+      });
+      
+      if (error) throw error;
+      return { error: null };
+    } catch (error) {
+      console.error('Admin access error:', error);
+      return { error: error as Error };
+    }
+  };
+
   const value = {
     session,
     user,
     signIn,
     signOut,
-    loading
+    loading,
+    adminAccess
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
