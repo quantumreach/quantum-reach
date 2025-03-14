@@ -19,10 +19,4 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  build: {
-    rollupOptions: {
-      // Make sure all dependencies are properly bundled
-      external: ["zod"],
-    },
-  },
 }));
