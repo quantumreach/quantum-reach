@@ -12,6 +12,8 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/admin/Dashboard";
 import BlogList from "./pages/admin/BlogList";
 import BlogEdit from "./pages/admin/BlogEdit";
+import ContactList from "./pages/admin/ContactList";
+import ApplicationList from "./pages/admin/ApplicationList";
 import Blogs from "./pages/Blogs";
 import BlogPost from "./pages/BlogPost";
 import { AuthProvider } from "./context/AuthContext";
@@ -39,6 +41,8 @@ const App = () => (
             <Route path="/admin/blogs" element={<ProtectedRoute><BlogList /></ProtectedRoute>} />
             <Route path="/admin/blogs/new" element={<ProtectedRoute><BlogEdit /></ProtectedRoute>} />
             <Route path="/admin/blogs/:id" element={<ProtectedRoute><BlogEdit /></ProtectedRoute>} />
+            <Route path="/admin/contacts" element={<ProtectedRoute><ContactList /></ProtectedRoute>} />
+            <Route path="/admin/applications" element={<ProtectedRoute><ApplicationList /></ProtectedRoute>} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
