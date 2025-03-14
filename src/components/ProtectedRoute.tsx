@@ -18,6 +18,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     );
   }
 
+  // If not logged in or not an admin user, redirect to login
   if (!user) {
     return <Navigate to="/login" replace />;
   }

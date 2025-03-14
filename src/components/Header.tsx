@@ -69,16 +69,12 @@ const Header = () => {
             )}
           </nav>
 
-          {/* Contact Button and Login/Logout (Desktop) */}
+          {/* Contact Button (Desktop) - Removed Login Button */}
           <div className="hidden md:flex items-center space-x-4">
-            {user ? (
+            {user && (
               <Button variant="outline" onClick={() => signOut()}>
                 Logout
               </Button>
-            ) : (
-              <Link to="/login">
-                <Button variant="outline">Login</Button>
-              </Link>
             )}
             <Button onClick={scrollToContact}>
               Contact Us
@@ -129,7 +125,7 @@ const Header = () => {
                 Admin
               </Link>
             )}
-            {user ? (
+            {user && (
               <Button 
                 variant="outline" 
                 className="mt-2" 
@@ -140,14 +136,6 @@ const Header = () => {
               >
                 Logout
               </Button>
-            ) : (
-              <Link 
-                to="/login" 
-                className="w-full"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <Button variant="outline" className="w-full">Login</Button>
-              </Link>
             )}
             <Button className="mt-2" onClick={scrollToContact}>
               Contact Us

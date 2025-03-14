@@ -32,8 +32,8 @@ const Login = () => {
       const { error } = await signIn(email, password);
       if (error) {
         toast({
-          title: "Login failed",
-          description: error.message,
+          title: "Access denied",
+          description: "Invalid credentials or you don't have access to this area",
           variant: "destructive"
         });
       } else {
@@ -61,8 +61,8 @@ const Login = () => {
       <main className="flex-1 flex items-center justify-center p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle className="text-2xl text-center">Admin Login</CardTitle>
-            <CardDescription className="text-center">Enter your credentials to access the admin panel</CardDescription>
+            <CardTitle className="text-2xl text-center">Administrative Access</CardTitle>
+            <CardDescription className="text-center">This area is restricted to authorized personnel only</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
@@ -88,13 +88,13 @@ const Login = () => {
                 />
               </div>
               <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? 'Logging in...' : 'Login'}
+                {isLoading ? 'Verifying...' : 'Authenticate'}
               </Button>
             </form>
           </CardContent>
           <CardFooter className="flex justify-center">
             <p className="text-sm text-muted-foreground">
-              Admin access only. For regular users, please return to the <a href="/" className="text-quantum-400 hover:underline">homepage</a>.
+              Authorized personnel only. For regular users, please return to the <a href="/" className="text-quantum-400 hover:underline">homepage</a>.
             </p>
           </CardFooter>
         </Card>
