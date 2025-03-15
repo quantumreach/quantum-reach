@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Mail, Menu } from "lucide-react";
 import { useState } from "react";
@@ -10,8 +11,15 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 border-b border-blue-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-sm">
       <div className="container flex h-16 items-center justify-between px-4 md:px-8">
-        <Link href="/" className="font-bold text-xl text-blue-600">
-          Quantum Reach
+        <Link href="/" className="flex items-center">
+          <Image 
+            src="/qr.png" 
+            alt="Quantum Reach Logo" 
+            width={40} 
+            height={40} 
+            className="mr-2"
+          />
+          <span className="font-bold text-xl text-blue-600">Quantum Reach</span>
         </Link>
 
         {/* Mobile menu button */}
