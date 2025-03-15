@@ -9,10 +9,12 @@ const founders = [
     role: "CEO & Co-Founder",
     image: "/rushil.jpeg",
     fallback: "RB",
-    bio: "15+ years of experience in tech leadership and strategic innovation. Previously led digital transformation at Fortune 500 companies.",
+    bio: "Learning to create value for the world. Passionate about building a better future.",
     expertise: ["Strategic Planning", "Leadership", "Business Development"],
     social: {
       linkedin: "https://www.linkedin.com/in/rushil-borsania-576517259/",
+      twitter: "#",
+      github: "#"
     }
   },
   { 
@@ -20,7 +22,7 @@ const founders = [
     role: "CTO & Co-Founder",
     image: "/sks.jpeg",
     fallback: "SKS",
-    bio: "Full-stack developer with a passion for creating elegant solutions to complex problems. Expert in cloud architecture and AI integration.",
+    bio: "Passion for creating elegant solutions to complex problems. Expert in AI integration.",
     expertise: ["System Architecture", "AI & ML", "Cloud Infrastructure"],
     social: {
       linkedin: "https://www.linkedin.com/in/kyameinsahilwho",
@@ -63,13 +65,13 @@ const CoFounders = () => {
                 ))}
               </div>
               <div className="flex justify-center gap-6 pt-4">
-                <a href={founder.social.linkedin} className="text-gray-500 hover:text-blue-600 transition-colors">
+                <a target="_blank" href={founder.social.linkedin} className="text-gray-500 hover:text-blue-600 transition-colors">
                   <Linkedin size={24} />
                 </a>
-                <a href={founder.social.twitter} className="text-gray-500 hover:text-blue-600 transition-colors">
+                <a target="_blank" href={founder.social.twitter} className="text-gray-500 hover:text-blue-600 transition-colors">
                   <Twitter size={24} />
                 </a>
-                <a href={founder.social.github} className="text-gray-500 hover:text-blue-600 transition-colors">
+                <a target="_blank" href={founder.social.github} className="text-gray-500 hover:text-blue-600 transition-colors">
                   <Github size={24} />
                 </a>
               </div>
