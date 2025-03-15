@@ -2,6 +2,7 @@ import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
 import TechStack from "@/components/sections/TechStack";
 import CoFounders from "@/components/sections/CoFounders";
+import Contact from "@/components/sections/Contact";
 import FAQ from "@/components/sections/FAQ";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <Services />
       <TechStack />
       <CoFounders />
+      <Contact />
       <FAQ />
     </main>
   );
