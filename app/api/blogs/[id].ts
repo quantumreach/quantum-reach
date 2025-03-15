@@ -19,7 +19,7 @@ export async function GET(request: Request, { params }: Props): Promise<NextResp
     }
 
     const blog: blogs | null = await prisma.blogs.findUnique({
-      where: { id },
+      where: { id: id.toString() },
     });
 
     if (!blog) {
@@ -60,7 +60,7 @@ export async function PUT(request: Request, { params }: Props): Promise<NextResp
     } = await request.json();
     
     const blog: blogs = await prisma.blogs.update({
-      where: { id },
+      where: { id: id.toString() },
       data: {
         title: title || null,
         slug: slug || null,
@@ -95,7 +95,7 @@ export async function DELETE(request: Request, { params }: Props): Promise<NextR
     }
 
     await prisma.blogs.delete({
-      where: { id },
+      where: { id: id.toString() },
     });
     return NextResponse.json({ success: true, data: {} });
   } catch (error: any) {
