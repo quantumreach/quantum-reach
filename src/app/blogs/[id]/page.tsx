@@ -7,8 +7,6 @@ import Footer from '@/components/Footer';
 export default function BlogPostPage() {
   const { id } = useParams();
   
-  // The original blog post logic would go here
-  
   return (
     <>
       <Header />

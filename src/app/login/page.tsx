@@ -4,8 +4,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export default function LoginPage() {
-  // The original login page logic would go here
-  
   return (
     <>
       <Header />

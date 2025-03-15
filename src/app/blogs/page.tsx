@@ -4,7 +4,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export default function BlogsPage() {
-  // The original blogs page logic would go here
   return (
     <>
       <Header />
