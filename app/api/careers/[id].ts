@@ -19,7 +19,7 @@ export async function GET(request: Request, { params }: Props): Promise<NextResp
     }
 
     const application: careers_applications | null = await prisma.careers_applications.findUnique({
-      where: { id },
+      where: { id: String(id) },
     });
 
     if (!application) {
@@ -44,7 +44,7 @@ export async function PUT(request: Request, { params }: Props): Promise<NextResp
     const { name, email, phone, job_title, job_type, experience, education, message } = await request.json();
 
     const application: careers_applications = await prisma.careers_applications.update({
-      where: { id },
+      where: { id: String(id) },
       data: {
         name: name || null,
         email: email || null,
@@ -72,7 +72,7 @@ export async function DELETE(request: Request, { params }: Props): Promise<NextR
     }
 
     await prisma.careers_applications.delete({
-      where: { id },
+      where: { id: String(id) },
     });
     return NextResponse.json({ success: true, data: {} });
   } catch (error: any) {
