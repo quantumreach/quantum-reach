@@ -21,8 +21,8 @@ export async function POST(request: Request): Promise<NextResponse> {
         name: name || null,
         email: email || null,
         phone: phone || null,
-        job_title: job_title || null,
-        job_type: job_type || null,
+        jobTitle: job_title || null,
+        jobType: job_type || null,
         experience: experience || null,
         education: education || null,
         message: message || null

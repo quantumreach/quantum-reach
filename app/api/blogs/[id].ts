@@ -12,14 +12,10 @@ interface Props {
 
 export async function GET(request: Request, { params }: Props): Promise<NextResponse> {
   try {
-    const id: number = Number(params.id);
-
-    if (isNaN(id)) {
-      return NextResponse.json({ success: false, error: 'Invalid ID format' }, { status: 400 });
-    }
+    const id: string = params.id;
 
     const blog: blogs | null = await prisma.blogs.findUnique({
-      where: { id: id.toString() },
+      where: { id: params.id },
     });
 
     if (!blog) {
@@ -35,11 +31,7 @@ export async function GET(request: Request, { params }: Props): Promise<NextResp
 
 export async function PUT(request: Request, { params }: Props): Promise<NextResponse> {
   try {
-    const id: number = Number(params.id);
-
-    if (isNaN(id)) {
-      return NextResponse.json({ success: false, error: 'Invalid ID format' }, { status: 400 });
-    }
+    const id: string = params.id;
 
     const {
       title,
@@ -60,23 +52,23 @@ export async function PUT(request: Request, { params }: Props): Promise<NextResp
     } = await request.json();
     
     const blog: blogs = await prisma.blogs.update({
-      where: { id: id.toString() },
+      where: { id: params.id },
       data: {
         title: title || null,
         slug: slug || null,
         content: content || null,
         excerpt: excerpt || null,
         published: published || null,
-        meta_title: meta_title || null,
-        meta_description: meta_description || null,
-        meta_keywords: meta_keywords || null,
-        featured_image: featured_image || null,
-        og_title: og_title || null,
-        og_description: og_description || null,
-        og_image: og_image || null,
-        twitter_title: twitter_title || null,
-        twitter_description: twitter_description || null,
-        twitter_image: twitter_image || null
+        metaTitle: meta_title || null,
+        metaDescription: meta_description || null,
+        metaKeywords: meta_keywords || null,
+        featuredImage: featured_image || null,
+        ogTitle: og_title || null,
+        ogDescription: og_description || null,
+        ogImage: og_image || null,
+        twitterTitle: twitter_title || null,
+        twitterDescription: twitter_description || null,
+        twitterImage: twitter_image || null
       },
     });
     return NextResponse.json({ success: true, data: blog });
@@ -88,14 +80,10 @@ export async function PUT(request: Request, { params }: Props): Promise<NextResp
 
 export async function DELETE(request: Request, { params }: Props): Promise<NextResponse> {
   try {
-    const id: number = Number(params.id);
-
-    if (isNaN(id)) {
-      return NextResponse.json({ success: false, error: 'Invalid ID format' }, { status: 400 });
-    }
+    const id: string = params.id;
 
     await prisma.blogs.delete({
-      where: { id: id.toString() },
+      where: { id: params.id },
     });
     return NextResponse.json({ success: true, data: {} });
   } catch (error: any) {

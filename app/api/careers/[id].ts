@@ -12,14 +12,10 @@ interface Props {
 
 export async function GET(request: Request, { params }: Props): Promise<NextResponse> {
   try {
-    const id: number = Number(params.id);
-
-    if (isNaN(id)) {
-      return NextResponse.json({ success: false, error: 'Invalid ID format' }, { status: 400 });
-    }
+    const id: string = params.id;
 
     const application: careers_applications | null = await prisma.careers_applications.findUnique({
-      where: { id: String(id) },
+      where: { id: params.id },
     });
 
     if (!application) {
@@ -35,22 +31,18 @@ export async function GET(request: Request, { params }: Props): Promise<NextResp
 
 export async function PUT(request: Request, { params }: Props): Promise<NextResponse> {
   try {
-    const id: number = Number(params.id);
-
-    if (isNaN(id)) {
-      return NextResponse.json({ success: false, error: 'Invalid ID format' }, { status: 400 });
-    }
+    const id: string = params.id;
 
     const { name, email, phone, job_title, job_type, experience, education, message } = await request.json();
 
     const application: careers_applications = await prisma.careers_applications.update({
-      where: { id: String(id) },
+      where: { id: params.id },
       data: {
         name: name || null,
         email: email || null,
         phone: phone || null,
-        job_title: job_title || null,
-        job_type: job_type || null,
+        jobTitle: job_title || null,
+        jobType: job_type || null,
         experience: experience || null,
         education: education || null,
         message: message || null
@@ -65,14 +57,10 @@ export async function PUT(request: Request, { params }: Props): Promise<NextResp
 
 export async function DELETE(request: Request, { params }: Props): Promise<NextResponse> {
   try {
-    const id: number = Number(params.id);
-
-    if (isNaN(id)) {
-      return NextResponse.json({ success: false, error: 'Invalid ID format' }, { status: 400 });
-    }
+    const id: string = params.id;
 
     await prisma.careers_applications.delete({
-      where: { id: String(id) },
+      where: { id: params.id },
     });
     return NextResponse.json({ success: true, data: {} });
   } catch (error: any) {

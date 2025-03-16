@@ -19,7 +19,7 @@ export async function GET(request: Request, { params }: Props): Promise<NextResp
     }
 
     const contact: contact_submissions | null = await prisma.contact_submissions.findUnique({
-      where: { id: String(id) },
+      where: { id: params.id },
     });
 
     if (!contact) {
@@ -44,7 +44,7 @@ export async function PUT(request: Request, { params }: Props): Promise<NextResp
     const { name, email, subject, message } = await request.json();
 
     const contact: contact_submissions = await prisma.contact_submissions.update({
-      where: { id: String(id) },
+      where: { id: params.id },
       data: { 
         name: name || null,
         email: email || null,
@@ -68,7 +68,7 @@ export async function DELETE(request: Request, { params }: Props): Promise<NextR
     }
 
     await prisma.contact_submissions.delete({
-      where: { id: String(id) },
+      where: { id: params.id },
     });
     return NextResponse.json({ success: true, data: {} });
   } catch (error: any) {

@@ -1,51 +1,52 @@
-datasource db {
-  provider  = "mongodb"
-  url       = env("DATABASE_URL")
-}
-
 generator client {
   provider = "prisma-client-js"
 }
 
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
 model contact_submissions {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  name       String?
-  email      String?
-  subject    String?
-  message    String?
-  created_at DateTime @default(now())
+  id         String   @id @default(uuid())
+  name       String
+  email      String
+  subject    String
+  message    String
+  createdAt  DateTime @default(now()) @map("created_at")
 }
 
 model careers_applications {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  created_at DateTime @default(now())
-  name       String?
-  email      String?
-  phone      String?
-  job_title  String?
-  job_type   String?
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now()) @map("created_at")
+  name       String
+  email      String
+  phone      String
+  jobTitle   String   @map("job_title")
+  jobType    String   @map("job_type")
   experience String?
   education  String?
   message    String?
 }
 
 model blogs {
-  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
-  created_at         DateTime @default(now())
-  updated_at         DateTime @updatedAt
-  title              String?
-  slug               String?
-  content            String?
-  excerpt            String?
-  published          Boolean?
-  meta_title         String?
-  meta_description   String?
-  meta_keywords      String?
-  featured_image     String?
-  og_title           String?
-  og_description     String?
-  og_image           String?
-  twitter_title      String?
-  twitter_description String?
-  twitter_image      String?
+  id               String   @id @default(uuid())
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+  title            String
+  slug             String   @unique
+  content          String
+  excerpt          String?
+  published        Boolean  @default(false)
+  metaTitle        String?  @map("meta_title")
+  metaDescription  String?  @map("meta_description")
+  metaKeywords     String?  @map("meta_keywords")
+  featuredImage    String?  @map("featured_image")
+  ogTitle          String?  @map("og_title")
+  ogDescription    String?  @map("og_description")
+  ogImage          String?  @map("og_image")
+  twitterTitle     String?  @map("twitter_title")
+  twitterDescription String? @map("twitter_description")
+  twitterImage     String?  @map("twitter_image")
 }

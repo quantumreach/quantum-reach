@@ -34,21 +34,21 @@ export async function POST(request: Request): Promise<NextResponse> {
 
     const blog: blogs = await prisma.blogs.create({
       data: {
-        title: title || null,
-        slug: slug || null,
-        content: content || null,
-        excerpt: excerpt || null,
-        published: published || null,
-        meta_title: meta_title || null,
-        meta_description: meta_description || null,
-        meta_keywords: meta_keywords || null,
-        featured_image: featured_image || null,
-        og_title: og_title || null,
-        og_description: og_description || null,
-        og_image: og_image || null,
-        twitter_title: twitter_title || null,
-        twitter_description: twitter_description || null,
-        twitter_image: twitter_image || null
+      title: title || null,
+      slug: slug || null,
+      content: content || null,
+      excerpt: excerpt || null,
+      published: published || null,
+      metaTitle: meta_title || null,
+      metaDescription: meta_description || null,
+      metaKeywords: meta_keywords || null,
+      featuredImage: featured_image || null,
+      ogTitle: og_title || null,
+      ogDescription: og_description || null,
+      ogImage: og_image || null,
+      twitterTitle: twitter_title || null,
+      twitterDescription: twitter_description || null,
+      twitterImage: twitter_image || null
       },
     });
     return NextResponse.json({ success: true, data: blog }, { status: 201 });
