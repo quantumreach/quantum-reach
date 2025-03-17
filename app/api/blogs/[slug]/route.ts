@@ -2,9 +2,9 @@ import { NextResponse } from 'next/server';
 import { prisma } from '../../../../lib/prisma';
 import { blogs } from '@prisma/client';
 
-export async function GET(request: Request, context: { params: { slug: string } }): Promise<NextResponse> {
+export async function GET(request: Request, { params }: { params: { slug: string } }): Promise<NextResponse> {
   try {
-    const { slug } = context.params;
+    const { slug } = params;
 
     if (!slug || typeof slug !== 'string') {
       return NextResponse.json({ success: false, error: 'Invalid slug format' }, { status: 400 });
@@ -30,7 +30,7 @@ export async function GET(request: Request, context: { params: { slug: string } 
   }
 }
 
-export async function PUT(request: Request, context: { params: { slug: string } }): Promise<NextResponse> {
+export async function PUT(request: Request, { params }: { params: { slug: string } }): Promise<NextResponse> {
   try {
     const {
       title,
@@ -45,7 +45,7 @@ export async function PUT(request: Request, context: { params: { slug: string } 
     } = await request.json();
     
     const blog: blogs = await prisma.blogs.update({
-      where: { slug: context.params.slug },
+      where: { slug: params.slug },
       data: {
         title: title || null,
         slug: slug || null, // new slug can be updated
@@ -65,10 +65,10 @@ export async function PUT(request: Request, context: { params: { slug: string } 
   }
 }
 
-export async function DELETE(request: Request, context: { params: { slug: string } }): Promise<NextResponse> {
+export async function DELETE(request: Request, { params }: { params: { slug: string } }): Promise<NextResponse> {
   try {
     await prisma.blogs.delete({
-      where: { slug: context.params.slug },
+      where: { slug: params.slug },
     });
     return NextResponse.json({ success: true, data: {} });
   } catch (error: any) {
