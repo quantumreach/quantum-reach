@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { prisma } from '../../../../lib/prisma';
 import { blogs } from '@prisma/client';
 
-export async function GET(request: Request, { params }: { params: { slug: string } }): Promise<NextResponse> {
+export async function GET(request: Request, { params }: { params: Record<string, string> }): Promise<NextResponse> {
   try {
     const { slug } = params;
 
@@ -30,7 +30,7 @@ export async function GET(request: Request, { params }: { params: { slug: string
   }
 }
 
-export async function PUT(request: Request, { params }: { params: { slug: string } }): Promise<NextResponse> {
+export async function PUT(request: Request, { params }: { params: Record<string, string> }): Promise<NextResponse> {
   try {
     const {
       title,
@@ -65,7 +65,7 @@ export async function PUT(request: Request, { params }: { params: { slug: string
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: { slug: string } }): Promise<NextResponse> {
+export async function DELETE(request: Request, { params }: { params: Record<string, string> }): Promise<NextResponse> {
   try {
     await prisma.blogs.delete({
       where: { slug: params.slug },
