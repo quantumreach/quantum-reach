@@ -10,8 +10,10 @@ export default async function Dashboard() {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        get(name: string) {
-          return cookieStore.get(name)?.value;
+        async get(name: string) {
+          const cookieStoreResolved = await cookieStore;
+          const cookie = cookieStoreResolved.get(name);
+          return cookie?.value;
         },
       },
     }
