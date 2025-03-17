@@ -28,9 +28,9 @@ function handleError(error: unknown, message: string): NextResponse {
 }
 
 export async function GET(
-  _: Request, 
+  request: Request,
   { params }: { params: { slug: string } }
-): Promise<NextResponse> {
+) {
   try {
     const { slug } = params;
 
