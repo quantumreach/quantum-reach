@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClientSupabaseClient } from '@/lib/supabase';
+import { Toaster } from "@/components/ui/sonner"
 
 export default function DashboardLayout({
   children,
@@ -77,6 +78,7 @@ export default function DashboardLayout({
         </nav>
       )}
       <main className="container mx-auto py-8 px-4 sm:px-6">{children}</main>
+      <Toaster />
     </div>
   );
 }
