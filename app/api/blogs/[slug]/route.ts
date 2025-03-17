@@ -27,7 +27,10 @@ function handleError(error: unknown, message: string): NextResponse {
   );
 }
 
-export async function GET(_: Request, { params }: { params: Record<string, string> }): Promise<NextResponse> {
+export async function GET(
+  _: Request, 
+  { params }: { params: { slug: string } }
+): Promise<NextResponse> {
   try {
     const { slug } = params;
 
@@ -60,7 +63,10 @@ export async function GET(_: Request, { params }: { params: Record<string, strin
   }
 }
 
-export async function PUT(request: Request, { params }: { params: Record<string, string> }): Promise<NextResponse> {
+export async function PUT(
+  request: Request, 
+  { params }: { params: { slug: string } }
+): Promise<NextResponse> {
   try {
     const { slug } = params;
 
@@ -125,7 +131,10 @@ export async function PUT(request: Request, { params }: { params: Record<string,
   }
 }
 
-export async function DELETE(_: Request, { params }: { params: Record<string, string> }): Promise<NextResponse> {
+export async function DELETE(
+  _: Request, 
+  { params }: { params: { slug: string } }
+): Promise<NextResponse> {
   try {
     const { slug } = params;
     
