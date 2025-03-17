@@ -141,3 +141,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+.font-lora {
+  font-family: var(--font-lora);
+}

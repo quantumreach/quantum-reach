@@ -24,12 +24,6 @@ export async function POST(request: Request): Promise<NextResponse> {
       meta_description,
       meta_keywords,
       featured_image,
-      og_title,
-      og_description,
-      og_image,
-      twitter_title,
-      twitter_description,
-      twitter_image
     } = await request.json();
 
     const blog: blogs = await prisma.blogs.create({
@@ -43,12 +37,6 @@ export async function POST(request: Request): Promise<NextResponse> {
       metaDescription: meta_description || null,
       metaKeywords: meta_keywords || null,
       featuredImage: featured_image || null,
-      ogTitle: og_title || null,
-      ogDescription: og_description || null,
-      ogImage: og_image || null,
-      twitterTitle: twitter_title || null,
-      twitterDescription: twitter_description || null,
-      twitterImage: twitter_image || null
       },
     });
     return NextResponse.json({ success: true, data: blog }, { status: 201 });

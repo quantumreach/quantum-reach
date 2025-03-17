@@ -8,6 +8,11 @@ import { useState } from "react";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const navigationItems = [
+    { name: 'Home', href: '/' },
+    { name: 'Blogs', href: '/blogs' },
+  ];
+
   return (
     <nav className="sticky top-0 z-50 border-b border-blue-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-sm">
       <div className="container flex h-16 items-center justify-between px-4 md:px-8">
@@ -36,6 +41,7 @@ const Navbar = () => {
           <Link href="#tech-stack" className="text-gray-600 hover:text-blue-600 transition-colors text-sm font-medium">Tech Stack</Link>
           <Link href="#team" className="text-gray-600 hover:text-blue-600 transition-colors text-sm font-medium">Our Team</Link>
           <Link href="#faq" className="text-gray-600 hover:text-blue-600 transition-colors text-sm font-medium">FAQ</Link>
+          <Link href="/blogs" className="text-gray-600 hover:text-blue-600 transition-colors text-sm font-medium">Blogs</Link>
           <Button className="bg-blue-500 text-white hover:bg-blue-600 px-4 py-2" size="sm">
             <Mail className="h-4 w-4 mr-2" /> Contact Us
           </Button>
@@ -49,6 +55,7 @@ const Navbar = () => {
               <Link href="#tech-stack" className="text-gray-600 hover:text-blue-600 transition-colors" onClick={() => setIsMenuOpen(false)}>Tech Stack</Link>
               <Link href="#team" className="text-gray-600 hover:text-blue-600 transition-colors" onClick={() => setIsMenuOpen(false)}>Our Team</Link>
               <Link href="#faq" className="text-gray-600 hover:text-blue-600 transition-colors" onClick={() => setIsMenuOpen(false)}>FAQ</Link>
+              <Link href="/blogs" className="text-gray-600 hover:text-blue-600 transition-colors" onClick={() => setIsMenuOpen(false)}>Blogs</Link>
               <Button className="bg-blue-500 text-white hover:bg-blue-600 w-full px-4 py-2" onClick={() => setIsMenuOpen(false)}>
                 <Mail className="h-4 w-4 mr-2" /> Contact Us
               </Button>

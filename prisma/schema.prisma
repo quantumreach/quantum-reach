@@ -43,10 +43,4 @@ model blogs {
   metaDescription  String?  @map("meta_description")
   metaKeywords     String?  @map("meta_keywords")
   featuredImage    String?  @map("featured_image")
-  ogTitle          String?  @map("og_title")
-  ogDescription    String?  @map("og_description")
-  ogImage          String?  @map("og_image")
-  twitterTitle     String?  @map("twitter_title")
-  twitterDescription String? @map("twitter_description")
-  twitterImage     String?  @map("twitter_image")
 }
