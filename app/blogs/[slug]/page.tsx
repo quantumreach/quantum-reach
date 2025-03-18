@@ -9,7 +9,7 @@ interface Props {
 }
 
 async function getBlog(slug: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
   const url = new URL(`/api/blogs/${slug}`, baseUrl);
   const res = await fetch(url.toString(), {
     cache: 'no-store',
