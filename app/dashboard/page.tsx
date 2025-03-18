@@ -110,7 +110,7 @@ export default async function Dashboard() {
                   </div>
                   <div className="flex space-x-3">
                     <Link 
-                      href={`/dashboard/blog/edit/${blog.id}`}
+                      href={`/dashboard/blog/edit/${blog.slug}`}
                       className="text-blue-600 hover:text-blue-800 hover:underline text-sm font-medium"
                     >
                       Edit
