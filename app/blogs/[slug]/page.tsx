@@ -3,9 +3,9 @@ import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 async function getBlog(slug: string) {
@@ -19,8 +19,12 @@ async function getBlog(slug: string) {
   return data.data;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
   const blog = await getBlog(slug);
   if (!blog) return { title: 'Blog Not Found' };
   
@@ -31,8 +35,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function BlogPage({ params }: Props) {
-  const { slug } = params;
+export default async function BlogPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const blog = await getBlog(slug);
   if (!blog) notFound();
 

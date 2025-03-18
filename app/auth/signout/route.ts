@@ -11,13 +11,16 @@ export async function POST(request: Request) {
     {
       cookies: {
         get(name: string) {
-          return cookieStore.get(name)?.value
+          // Type assertion to fix TypeScript error
+          return (cookieStore as any).get(name)?.value
         },
         set(name: string, value: string, options: CookieOptions) {
-          cookieStore.set({ name, value, ...options })
+          // Type assertion to fix TypeScript error
+          (cookieStore as any).set({ name, value, ...options })
         },
         remove(name: string, options: CookieOptions) {
-          cookieStore.set({ name, value: '', ...options })
+          // Type assertion to fix TypeScript error
+          (cookieStore as any).set({ name, value: '', ...options })
         },
       },
     }

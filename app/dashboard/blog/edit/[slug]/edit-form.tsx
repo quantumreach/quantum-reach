@@ -32,7 +32,8 @@ export default function BlogEditForm({ initialBlog }: { initialBlog: any }) {
     setSubmitting(true)
     
     try {
-      const response = await fetch(`/api/blogs/${blog.slug}`, {
+      // Use the original slug from initialBlog for the API endpoint
+      const response = await fetch(`/api/blogs/${initialBlog.slug}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -44,7 +45,7 @@ export default function BlogEditForm({ initialBlog }: { initialBlog: any }) {
           meta_description: blog.meta_description,
           meta_keywords: blog.meta_keywords,
           featured_image: blog.featured_image,
-          slug: blog.slug
+          slug: blog.slug // New slug is still sent in the request body
         })
       })
       

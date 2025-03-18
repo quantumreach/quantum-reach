@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '../../../../lib/prisma';
+import { prisma } from '@/lib/prisma';
 import { blogs } from '@prisma/client';
 import { z } from 'zod';
 
@@ -28,11 +28,11 @@ function handleError(error: unknown, message: string): NextResponse {
 }
 
 export async function GET(
-  request: Request,
-  { params }: { params: { slug: string } }
-) {
+    request: Request,
+    { params }: { params: Promise<{ slug: string }> }
+  ) {
   try {
-    const { slug } = params;
+    const { slug } = await params 
 
     if (!slug || typeof slug !== 'string') {
       return NextResponse.json(
@@ -64,11 +64,11 @@ export async function GET(
 }
 
 export async function PUT(
-  request: Request, 
-  { params }: { params: { slug: string } }
-): Promise<NextResponse> {
+    request: Request,
+    { params }: { params: Promise<{ slug: string }> }
+  ) {
   try {
-    const { slug } = params;
+    const { slug } = await params 
 
     // Check if blog exists
     const existingBlog = await prisma.blogs.findUnique({
@@ -133,10 +133,10 @@ export async function PUT(
 
 export async function DELETE(
   _: Request, 
-  { params }: { params: { slug: string } }
-): Promise<NextResponse> {
+    { params }: { params: Promise<{ slug: string }> }
+  ) {
   try {
-    const { slug } = params;
+    const { slug } = await params 
     
     // Check if blog exists before deletion
     const existingBlog = await prisma.blogs.findUnique({
